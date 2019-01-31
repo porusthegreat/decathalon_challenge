@@ -20,4 +20,13 @@ public class BasePage {
                 .until(ExpectedConditions.visibilityOf(element));
         return wait;
     }
+
+    protected void switchToActiveTab(){
+        String parentWindow = driver.getWindowHandle();
+
+        for(String childWindow:driver.getWindowHandles())
+            if(!childWindow.equals(parentWindow))
+                driver.switchTo().window(childWindow);
+    }
+
 }
