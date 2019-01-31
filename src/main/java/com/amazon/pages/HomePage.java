@@ -1,4 +1,4 @@
-package com.amazon.login;
+package com.amazon.pages;
 
 
 import com.amazon.BasePage;
@@ -17,9 +17,8 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void navigateToHomePage() throws InterruptedException {
-        driver.get("https://www.amazon.in");
+    public void searchBy(String searchTerm){
         waitForElementVisibility(searchBox);
-        searchBox.sendKeys("iPhone 6s");
+        searchBox.sendKeys(searchTerm);
     }
 }

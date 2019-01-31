@@ -15,10 +15,11 @@ public class StartingSteps {
     public void beforeSteps() throws MalformedURLException {
         System.out.println("Before steps");
         driver = new InitDriver(System.getProperty("browser")).init();
+        driver.get("https://www.amazon.in");
     }
 
     @After
-    public void destroyDriver(){
+    public void destroyDriver() {
         driver.quit();
     }
 
