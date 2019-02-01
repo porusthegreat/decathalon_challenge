@@ -6,6 +6,8 @@ Feature: Search a Product
     Then user verifies the results contain <product>
     And user adds the first product in results to cart
     Then user verifies the price shown in checkout page
+    And user navigates to my cart page
+    Then user verifies the item added to cart
     Examples:
       | product    |
       | oneplus 6t |

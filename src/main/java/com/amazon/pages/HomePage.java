@@ -19,6 +19,9 @@ public class HomePage extends BasePage {
 
     private SearchResultsSection searchResultsSection;
 
+    @FindBy(css = ".nav-cart-icon.nav-sprite")
+    private WebElement cartIcon;
+
     private SearchResultsSection getSearchResultsSection() {
         return searchResultsSection;
     }
@@ -42,5 +45,10 @@ public class HomePage extends BasePage {
 
     public void selectFirstProductInResults() {
         getSearchResultsSection().clickOnFirstProductInSearchResults();
+    }
+
+    public void clickOnMyCartButton() {
+        waitForElementToBeClickable(cartIcon);
+        cartIcon.click();
     }
 }

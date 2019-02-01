@@ -14,6 +14,7 @@ public class HomePageSteps extends BaseSteps {
     @Then("user verifies the results contain (.*)")
     public void userVerifiesTheResultsContainIphone(String searchTerm) {
         homePage.verifySearchResultsContain(searchTerm);
+        currentScenario.setItemName(searchTerm);
     }
 
     @And("user adds the first product in results to cart")
@@ -25,4 +26,13 @@ public class HomePageSteps extends BaseSteps {
     }
 
 
+    @And("user navigates to my cart page")
+    public void userNavigatesToMyCartPage() {
+        homePage.clickOnMyCartButton();
+    }
+
+    @Then("user verifies the item added to cart")
+    public void userVerifiesTheItemAddedToCart() {
+        cartPage.assertItemNameInCart(currentScenario.getItemName());
+    }
 }
