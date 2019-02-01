@@ -24,6 +24,6 @@ public class ProductDescriptionPage extends BasePage {
     }
 
     public String getThePriceOfTheProductToBeAddedToCart(){
-        return getCartSection().getSelectedPriceOfProduct();
+        return getCartSection().getPriceOfProductSelected();
     }
 }

@@ -11,7 +11,7 @@ class CartSection extends BasePage {
     @FindBy(id = "submit.add-to-cart")
     private WebElement addToCartButton;
 
-    @FindBy(css = "#newAccordionRow span.a-color-price .currencyINR")
+    @FindBy(css = "#newAccordionRow .a-section.a-spacing-none.a-padding-none .a-color-price")
     private WebElement selectedPriceValue;
 
     CartSection(WebDriver driver) {
@@ -19,13 +19,13 @@ class CartSection extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    String getSelectedPriceOfProduct() {
-        waitForElementVisibility(selectedPriceValue);
-        return selectedPriceValue.getText().trim();
-    }
-
     void clickOnAddToCartButton() {
         waitForElementToBeClickable(addToCartButton);
         addToCartButton.click();
+    }
+
+    String getPriceOfProductSelected() {
+        waitForElementVisibility(selectedPriceValue);
+        return selectedPriceValue.getText();
     }
 }

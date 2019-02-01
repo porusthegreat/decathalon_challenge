@@ -1,5 +1,6 @@
 package com.amazon;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +28,10 @@ public class BasePage {
         for(String childWindow:driver.getWindowHandles())
             if(!childWindow.equals(parentWindow))
                 driver.switchTo().window(childWindow);
+    }
+
+    protected void jsClick(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
 }

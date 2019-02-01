@@ -1,6 +1,5 @@
 package com.amazon.steps;
 
-import com.amazon.pages.ProductDescriptionPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,9 +19,8 @@ public class HomePageSteps extends BaseSteps {
     @And("user adds the first product in results to cart")
     public void userAddsTheFirstProductInResultsToCart() throws InterruptedException {
         homePage.selectFirstProductInResults();
-        Thread.sleep(3000);
         String actualPriceBeforeAddingToCart = productDescriptionPage.getThePriceOfTheProductToBeAddedToCart();
-        System.out.println(actualPriceBeforeAddingToCart);
+        currentScenario.setPrice(actualPriceBeforeAddingToCart);
         productDescriptionPage.addTheProductToCart();
     }
 

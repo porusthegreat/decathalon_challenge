@@ -37,7 +37,7 @@ public class HomePage extends BasePage {
 
     public void verifySearchResultsContain(String expectedSearchTerm) {
         String actualOutput = getSearchResultsSection().getTitleOfFirstItemInSearchResults();
-        assertTrue(actualOutput.toLowerCase().contains(expectedSearchTerm));
+        assertTrue("First item in search results does not contain: " + expectedSearchTerm, actualOutput.toLowerCase().contains(expectedSearchTerm));
     }
 
     public void selectFirstProductInResults() {
