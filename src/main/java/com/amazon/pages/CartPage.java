@@ -24,7 +24,7 @@ public class CartPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public String getItemNameInCart(){
+    private String getItemNameInCart(){
         waitForElementVisibility(cartItem);
         return itemsListAddedToCart.get(0).getText();
     }
