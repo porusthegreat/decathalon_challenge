@@ -2,15 +2,15 @@ package com.amazon.steps;
 
 class ScenarioContext {
 
-    private static String price;
+    private static double price;
     private static String itemName;
     private static Double cartPrice;
 
-    String getPrice() {
+    double getPrice() {
         return price;
     }
 
-    void setPrice(String price) {
+    void setPrice(double price) {
         ScenarioContext.price = price;
     }
 

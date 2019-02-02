@@ -21,7 +21,9 @@ public class HomePageSteps extends BaseSteps {
     public void userAddsTheFirstProductInResultsToCart() throws InterruptedException {
         homePage.selectFirstProductInResults();
         String actualPriceBeforeAddingToCart = productDescriptionPage.getThePriceOfTheProductToBeAddedToCart();
-        currentScenario.setPrice(actualPriceBeforeAddingToCart.replace(" ", ""));
+        currentScenario.setPrice(Double.parseDouble(actualPriceBeforeAddingToCart.trim()
+                .replace(" ", "")
+                .replace(",", "")));
         productDescriptionPage.addTheProductToCart();
     }
 

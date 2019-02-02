@@ -16,8 +16,8 @@ public class CheckoutPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public String getPrice() {
+    public double getPrice() {
         waitForElementVisibility(priceInCheckoutPage);
-        return priceInCheckoutPage.getText().trim();
+        return Double.parseDouble(priceInCheckoutPage.getText().trim().replace(",", ""));
     }
 }
