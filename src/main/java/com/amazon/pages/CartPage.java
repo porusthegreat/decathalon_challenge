@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -105,5 +106,25 @@ public class CartPage extends BasePage {
         deleteItemButtonList.get(0).click();
         waitForPageToLoad();
         return priceOfItemTobeDeleted;
+    }
+
+    public void deleteAllCartItems() {
+        deleteItemButtonList.forEach(x -> {
+            try {
+                clickOnDeleteItemButton(x);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        try {
+            waitForPageToLoad();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void clickOnDeleteItemButton(WebElement element) throws InterruptedException {
+        waitForPageToLoad();
+        element.click();
     }
 }

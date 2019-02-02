@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.net.MalformedURLException;
 
-public class StartingSteps {
+public class StartingSteps extends BaseSteps{
 
     private WebDriver driver;
 
@@ -18,7 +18,7 @@ public class StartingSteps {
         driver.get("https://www.amazon.in");
     }
 
-//    @After
+    @After
     public void destroyDriver() {
         driver.quit();
     }

@@ -1,5 +1,6 @@
 package com.amazon.steps;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
@@ -32,5 +33,10 @@ public class CheckoutPageSteps extends BaseSteps {
 
         double actualPrice = cartPage.getActualCartPrice();
         assertEquals("Cart price has not got updated", actualPrice, currentScenario.getCartPrice());
+    }
+
+    @After
+    public void clearTheCart(){
+        cartPage.deleteAllCartItems();
     }
 }
