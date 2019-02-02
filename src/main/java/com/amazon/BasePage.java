@@ -22,11 +22,11 @@ public class BasePage {
         return wait;
     }
 
-    protected void switchToActiveTab(){
+    protected void switchToActiveTab() {
         String parentWindow = driver.getWindowHandle();
 
-        for(String childWindow:driver.getWindowHandles())
-            if(!childWindow.equals(parentWindow))
+        for (String childWindow : driver.getWindowHandles())
+            if (!childWindow.equals(parentWindow))
                 driver.switchTo().window(childWindow);
             else
                 driver.close();
@@ -34,6 +34,10 @@ public class BasePage {
 
     protected void jsClick(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
+
+    protected void waitForPageToLoad() throws InterruptedException {
+        Thread.sleep(3000);
     }
 
 }

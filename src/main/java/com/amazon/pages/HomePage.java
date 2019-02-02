@@ -22,6 +22,9 @@ public class HomePage extends BasePage {
     @FindBy(css = ".nav-cart-icon.nav-sprite")
     private WebElement cartIcon;
 
+    @FindBy(css = ".a-color-price.s-price")
+    private WebElement getPriceOfitemToBeSelected;
+
     private SearchResultsSection getSearchResultsSection() {
         return searchResultsSection;
     }
@@ -50,5 +53,10 @@ public class HomePage extends BasePage {
     public void clickOnMyCartButton() {
         waitForElementToBeClickable(cartIcon);
         cartIcon.click();
+    }
+
+    public String getThePriceOfTheProductToBeAddedToCart() {
+        waitForElementVisibility(getPriceOfitemToBeSelected);
+        return getPriceOfitemToBeSelected.getText().trim().replace(",", "");
     }
 }

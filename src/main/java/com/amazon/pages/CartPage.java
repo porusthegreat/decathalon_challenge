@@ -2,6 +2,7 @@ package com.amazon.pages;
 
 import com.amazon.BasePage;
 import com.amazon.driver.DriverProvider;
+import javafx.scene.control.TextInputControl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,15 @@ public class CartPage extends BasePage {
 
     @FindBy(css = "#sc-subtotal-amount-activecart span")
     private WebElement priceIncartPage;
+
+    @FindBy(css = ".a-size-small.sc-action-delete input")
+    private List<WebElement> deleteItemButtonList;
+
+    @FindBy(css = ".a-size-small.sc-action-delete input")
+    private WebElement deleteItemButton;
+
+    @FindBy(css = ".a-size-medium.sc-product-price.a-color-price.sc-price-sign")
+    private List<WebElement> priceOfItems;
 
     public CartPage() {
         driver = DriverProvider.getDriver();
@@ -87,5 +97,13 @@ public class CartPage extends BasePage {
                 .replace(",", "");
 
         return Integer.parseInt(actualPriceString);
+    }
+
+    public double removeOneItemOnTop() throws InterruptedException {
+        waitForElementVisibility(deleteItemButton);
+        double priceOfItemTobeDeleted = Double.parseDouble(priceOfItems.get(0).getText().replace(",", ""));
+        deleteItemButtonList.get(0).click();
+        waitForPageToLoad();
+        return priceOfItemTobeDeleted;
     }
 }

@@ -19,12 +19,13 @@ public class HomePageSteps extends BaseSteps {
 
     @And("user adds the first product in results to cart")
     public void userAddsTheFirstProductInResultsToCart() throws InterruptedException {
+        String actualPriceBeforeAddingToCart = homePage.getThePriceOfTheProductToBeAddedToCart();
         homePage.selectFirstProductInResults();
-        String actualPriceBeforeAddingToCart = productDescriptionPage.getThePriceOfTheProductToBeAddedToCart();
         currentScenario.setPrice(Double.parseDouble(actualPriceBeforeAddingToCart.trim()
                 .replace(" ", "")
                 .replace(",", "")));
         productDescriptionPage.addTheProductToCart();
+        System.out.println("current item price :" +  currentScenario.getPrice());
     }
 
 

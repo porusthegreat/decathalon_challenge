@@ -16,6 +16,8 @@ Feature: Search a Product
     And user navigates to my cart page
     Then user verifies the item added to cart
     Then user verifies the cart price has updated
+    And user removes an item from cart
+    Then user verifies the cart price has got updated after removing cart items
     Examples:
       | product | numberOfItems | anotherProduct |
       | redmi 5 | 4             | oneplus 6t     |

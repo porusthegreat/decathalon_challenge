@@ -18,7 +18,7 @@ public class StartingSteps {
         driver.get("https://www.amazon.in");
     }
 
-    @After
+//    @After
     public void destroyDriver() {
         driver.quit();
     }
