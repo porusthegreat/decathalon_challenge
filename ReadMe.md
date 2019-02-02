@@ -13,7 +13,6 @@
 
 **Tasks Covered:**
 
-* The tasks covered are below:
 * Search a product
 * Add an item to cart
 * verify Price
