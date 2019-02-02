@@ -1,6 +1,7 @@
 package com.amazon.driver;
 
 import com.amazon.utils.Browsers;
+import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -23,13 +24,15 @@ public class InitDriver {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        switch (browser){
+        switch (browser) {
             case Browsers.CHROME:
                 driver = getChromeDriver();
                 break;
+
             case Browsers.FIREFOX:
                 driver = getFirefoxDriver();
                 break;
+
             default:
                 driver = getChromeDriver();
         }
@@ -44,8 +47,14 @@ public class InitDriver {
     }
 
     private WebDriver getChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "binaries/chromedriver");
-       return new ChromeDriver();
+        if (SystemUtils.IS_OS_MAC)
+            System.setProperty("webdriver.chrome.driver", "binaries/chromedriver");
+        else if (SystemUtils.IS_OS_WINDOWS)
+            System.setProperty("webdriver.chrome.driver", "binaries/chromedriver.exe");
+        else if (SystemUtils.IS_OS_LINUX)
+            System.setProperty("webdriver.chrome.driver", "binaries/chromedriver_linux");
+
+        return new ChromeDriver();
     }
 
 }
