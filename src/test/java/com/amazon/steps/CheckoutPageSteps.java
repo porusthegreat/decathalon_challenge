@@ -11,4 +11,10 @@ public class CheckoutPageSteps extends BaseSteps {
         String actualPrice = checkoutPage.getPrice();
         assertEquals("Price mismatch in checkout page", currentScenario.getPrice(), actualPrice);
     }
+
+    @Then("user verifies the cart price has updated")
+    public void userVerifiesTheCartPriceHasUpdated() {
+        double actualPrice = cartPage.getActualCartPrice();
+        assertEquals("Cart price has not got updated", actualPrice, Double.parseDouble(currentScenario.getPrice().trim().replace(",", "")) + currentScenario.getCartPrice());
+    }
 }

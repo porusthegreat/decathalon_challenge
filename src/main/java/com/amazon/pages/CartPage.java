@@ -64,7 +64,7 @@ public class CartPage extends BasePage {
         } catch (Exception ignore) {}
     }
 
-    public void verifyThePriceHasGotUpdateWithItemQuantityIncreasedTo(int parseInt, String pricePerItem) {
+    public Double verifyThePriceHasGotUpdateWithItemQuantityIncreasedTo(int parseInt, String pricePerItem) {
         waitForElementVisibility(priceIncartPage);
 
         String actualPriceString = priceIncartPage.getText().replace(" ", "")
@@ -81,5 +81,16 @@ public class CartPage extends BasePage {
         double expectedPrice = expectedPricePerItem * parseInt;
 
         assertEquals("Expected price did not match according to the items updated", expectedPrice, actualPrice, 0);
+        return actualPrice;
+    }
+
+    public double getActualCartPrice() {
+        waitForElementVisibility(priceIncartPage);
+
+        String actualPriceString = priceIncartPage.getText().replace(" ", "")
+                .substring(0, priceIncartPage.getText().replace(" ", "").length() - 3)
+                .replace(",", "");
+
+        return Integer.parseInt(actualPriceString);
     }
 }

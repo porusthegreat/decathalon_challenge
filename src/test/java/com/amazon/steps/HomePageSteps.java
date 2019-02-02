@@ -44,7 +44,8 @@ public class HomePageSteps extends BaseSteps {
 
     @Then("the price should get updated accordingly to (.*)")
     public void thePriceShouldGetUpdatedAccordinglyToNumberOfItems(String numberOfItems) {
-        cartPage.verifyThePriceHasGotUpdateWithItemQuantityIncreasedTo(Integer.parseInt(numberOfItems),
+        Double cartPrice =  cartPage.verifyThePriceHasGotUpdateWithItemQuantityIncreasedTo(Integer.parseInt(numberOfItems),
                 currentScenario.getPrice());
+        currentScenario.setCartPrice(cartPrice);
     }
 }

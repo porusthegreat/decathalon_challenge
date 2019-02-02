@@ -10,6 +10,12 @@ Feature: Search a Product
     Then user verifies the item added to cart
     When user increases the number of items in cart to <numberOfItems>
     Then the price should get updated accordingly to <numberOfItems>
+    When user chooses to search by <anotherProduct>
+    Then user verifies the results contain <anotherProduct>
+    And user adds the first product in results to cart
+    And user navigates to my cart page
+    Then user verifies the item added to cart
+    Then user verifies the cart price has updated
     Examples:
-      | product | numberOfItems |
-      | redmi 5 | 4             |
+      | product | numberOfItems | anotherProduct |
+      | redmi 5 | 4             | oneplus 6t     |

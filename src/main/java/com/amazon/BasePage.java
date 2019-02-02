@@ -28,6 +28,8 @@ public class BasePage {
         for(String childWindow:driver.getWindowHandles())
             if(!childWindow.equals(parentWindow))
                 driver.switchTo().window(childWindow);
+            else
+                driver.close();
     }
 
     protected void jsClick(WebElement element) {
