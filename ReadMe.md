@@ -1,5 +1,4 @@
 # Decathalon SDET Challenge  
-===============================
 
 ## Steps to Run the Tests:
 
