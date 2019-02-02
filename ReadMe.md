@@ -1,4 +1,7 @@
-h1 Steps to Run the Tests:
+# Decathalon SDET Challenge  
+===============================
+
+## Steps to Run the Tests:
 
 **For MAC or Linux**
 
