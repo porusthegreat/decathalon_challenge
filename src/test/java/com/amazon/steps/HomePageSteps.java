@@ -21,7 +21,7 @@ public class HomePageSteps extends BaseSteps {
     public void userAddsTheFirstProductInResultsToCart() throws InterruptedException {
         homePage.selectFirstProductInResults();
         String actualPriceBeforeAddingToCart = productDescriptionPage.getThePriceOfTheProductToBeAddedToCart();
-        currentScenario.setPrice(actualPriceBeforeAddingToCart);
+        currentScenario.setPrice(actualPriceBeforeAddingToCart.replace(" ", ""));
         productDescriptionPage.addTheProductToCart();
     }
 
@@ -34,5 +34,17 @@ public class HomePageSteps extends BaseSteps {
     @Then("user verifies the item added to cart")
     public void userVerifiesTheItemAddedToCart() {
         cartPage.assertItemNameInCart(currentScenario.getItemName());
+    }
+
+    @When("user increases the number of items in cart to (.*)")
+    public void userIncreasesTheNumberOfItemsInCartToNumberOfItems(String numberOfItems) {
+        cartPage.increaseCurrentProductUnitsTo(Integer.parseInt(numberOfItems));
+
+    }
+
+    @Then("the price should get updated accordingly to (.*)")
+    public void thePriceShouldGetUpdatedAccordinglyToNumberOfItems(String numberOfItems) {
+        cartPage.verifyThePriceHasGotUpdateWithItemQuantityIncreasedTo(Integer.parseInt(numberOfItems),
+                currentScenario.getPrice());
     }
 }
