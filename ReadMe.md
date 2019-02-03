@@ -61,7 +61,9 @@
 
 * run **`gradle clean build parallel -Dbrowser=chrome -Ptags=@search`**
 
-#####Note : All the necessary dependencies will be automatically downloaded by running `gradle clean build`.
+
+####Note : All the necessary dependencies will be automatically downloaded by running `gradle clean build`.
+
 **Tasks Covered:**
 
 * Search a product
